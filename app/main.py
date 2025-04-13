@@ -8,7 +8,8 @@ from contextlib import asynccontextmanager
 import tenacity
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
-from models import Base
+from auth2.auth import login, signup
+from db.models import Base
 import time
 import psycopg2
 from sqlalchemy.exc import OperationalError
@@ -86,3 +87,8 @@ templates = Jinja2Templates(directory="frontend")
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
+
+
+
+app.post("/signup")(signup)
+app.post("/login")(login)

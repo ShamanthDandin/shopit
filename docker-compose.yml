@@ -1,25 +1,4 @@
 services:
-  fastapi:
-    build:
-      context: ./app
-      dockerfile: Dockerfile
-    container_name: web
-    ports:
-      - "8000:8000"
-    environment:
-      POSTGRES_HOST: postgres_container
-      POSTGRES_PORT: 5432
-      POSTGRES_DB: mydatabase
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin123
-      DATABASE_URL: postgresql://admin:admin123@postgres:5432/mydatabase
-    volumes:
-      - ./app:/app
-    depends_on:
-      - postgres
-    networks:
-      app_network:
-
   postgres:
     image: postgres:latest
     container_name: db
@@ -39,6 +18,27 @@ services:
     container_name: adminer_container
     ports:
       - "8080:8080"
+    depends_on:
+      - postgres
+    networks:
+      app_network:
+
+  fastapi:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: web
+    ports:
+      - "8000:8000"
+    environment:
+      POSTGRES_HOST: postgres_container
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+      DATABASE_URL: postgresql://admin:admin123@postgres:5432/mydatabase
+    volumes:
+      - ./app:/app
     depends_on:
       - postgres
     networks:

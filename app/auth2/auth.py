@@ -1,7 +1,7 @@
 # auth.py
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-from jose import JWTError, jwt
+from jose import jwt
 from datetime import datetime, timedelta
 import os
 import logging
@@ -11,9 +11,9 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy.exc import OperationalError
 from pydantic import BaseModel
-from models import User
-from hashing import Hash
-from schemas import UserCreate, TokenData, UserSchema
+from db.models import User
+from auth2.hashing import Hash
+from db.schemas import UserCreate, TokenData, UserCreate
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 
 # Database URL and security settings from environment variables
 DATABASE_URL = os.getenv("DATABASE_URL")
-SECRET_KEY = os.getenv("sdcgdfge45345sdf43")
+SECRET_KEY = "sdcgdfge45345sdf43"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
@@ -34,7 +34,7 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 # Dependency to get the database session
 def get_db():
     DATABASE_URL = os.getenv("DATABASE_URL")
-    engine = create_engine(DATABASE_URL.replace("postgresql://", "postgresql+psycopg2://"), pool_pre_ping=True)
+    engine = create_engine(DATABASE_URL, pool_pre_ping=True)
     SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
     db = SessionLocal()
     try:

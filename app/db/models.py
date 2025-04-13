@@ -11,7 +11,7 @@ class User(Base):
     email = Column(String, unique=True, index=True, nullable=False)
     pwd = Column(String, nullable=False)
     name = Column(String, nullable=False)
-    role = Column(Enum("admin", "seller", "customer", name="user_roles"), nullable=False)
+    role = Column(Enum("customer", "producer", "admin", name="user_roles"), nullable=False)
 
 class Product(Base):
     __tablename__ = "products"
