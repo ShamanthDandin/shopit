@@ -12,7 +12,9 @@ services:
       POSTGRES_DB: mydatabase
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin123
-      DATABASE_URL: postgresql://admin:admin123@postgres_container/mydatabase
+      DATABASE_URL: postgresql://admin:admin123@postgres:5432/mydatabase
+    volumes:
+      - ./app:/app
     depends_on:
       - postgres
     networks:
