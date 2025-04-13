@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+<div class="bg-white p-8 rounded shadow-md w-96">
+
+    <!-- Sign Up Form -->
+    <div class="mb-6">
+        <h3 class="text-lg font-medium mb-2">Sign Up</h3>
+        <form id="signup-form">
+            <div class="mb-4">
+                <label for="signup-name" class="block text-gray-700 text-sm font-bold mb-2">Name</label>
+                <input type="text" id="signup-name" name="signup-name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mb-4">
+                <label for="signup-email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                <input type="email" id="signup-email" name="signup-email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mb-4">
+                <label for="signup-password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                <input type="password" id="signup-password" name="signup-password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mb-4">
+                <label for="signup-role" class="block text-gray-700 text-sm font-bold mb-2">Role</label>
+                <select id="signup-role" name="signup-role" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="producer">Producer</option>
+                    <option value="customer">Customer</option>
+                </select>
+            </div>
+            <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                Sign Up
+            </button>
+        </form>
+    </div>
+
+    <!-- Login Form -->
+    <div>
+        <h3 class="text-lg font-medium mb-2">Login</h3>
+        <form id="login-form">
+            <div class="mb-4">
+                <label for="login-email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                <input type="email" id="login-email" name="login-email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mb-6">
+                <label for="login-password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                <input type="password" id="login-password" name="login-password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                Login
+            </button>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Add JavaScript for form submission and handling
+</script>
+
+</body>
+</html>
