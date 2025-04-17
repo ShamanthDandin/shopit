@@ -38,7 +38,7 @@ def check_db_health(max_attempts=5, wait_seconds=5):
 @tenacity.retry(wait=tenacity.wait_exponential(multiplier=1, min=4, max=10), stop=tenacity.stop_after_attempt(3))
 def create_sync_engine():
     try:
-        return create_engine(DATABASE_URL.replace("postgresql://", "postgresql+psycopg2://"))
+        return create_engine(DATABASE_URL)
     except Exception as e:
         logger.error(f"Failed to connect to database (sync): {e}")
         raise
@@ -92,3 +92,10 @@ async def read_root(request: Request):
 
 app.post("/signup")(signup)
 app.post("/login")(login)
+
+
+'''
+System design what would be the best to use 
+for backend and frontend
+
+'''
