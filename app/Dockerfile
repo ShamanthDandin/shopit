@@ -9,7 +9,7 @@ COPY . .
 
 EXPOSE 8000
 
-# Add wait-for-it script
+# # Add wait-for-it script
 ADD https://github.com/vishnubob/wait-for-it/raw/master/wait-for-it.sh /usr/local/bin/wait-for-it
 RUN chmod +x /usr/local/bin/wait-for-it
 
